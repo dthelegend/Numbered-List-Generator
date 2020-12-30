@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
         return 1;
     };
     FSTRING = argv[1];
-    
+
     for(i = START, k = 0; i < END; i += STEP, k += j){
         for(j = 0; *(FSTRING + j); j++) {
             if(*(FSTRING + j) == '\\') {
@@ -53,9 +53,7 @@ int main(int argc, char *argv[])
                 --k;
                 *(OUTSTRING + k + j) = *(FSTRING + j);
             }
-            else if(*(FSTRING + j) == '?') {
-                k += sprintf((OUTSTRING + k + j), "%d", i) - 1;
-            }
+            else if(*(FSTRING + j) == '?') k += sprintf((OUTSTRING + k + j), "%d", i) - 1;
             else *(OUTSTRING + k + j) = *(FSTRING + j);
         }
         *(OUTSTRING + k + (j++)) = '\n';
