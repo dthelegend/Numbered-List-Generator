@@ -45,16 +45,15 @@ int main(int argc, char *argv[])
         return 1;
     };
     FSTRING = argv[1];
-
+    
     for(i = START, k = 0; i < END; i += STEP, k += j){
         for(j = 0; *(FSTRING + j); j++) {
             if(*(FSTRING + j) == '\\') {
                 ++j;
                 --k;
                 *(OUTSTRING + k + j) = *(FSTRING + j);
-                continue;
-            };
-            if(*(FSTRING + j) == '?') {
+            }
+            else if(*(FSTRING + j) == '?') {
                 k += sprintf((OUTSTRING + k + j), "%d", i) - 1;
             }
             else *(OUTSTRING + k + j) = *(FSTRING + j);
