@@ -21,7 +21,7 @@ fi
 if [ -n "$4" ]; then
 	fstep="$4"
 else
-	fstep=2
+	fstep=1
 fi
 
 fstring="$1" #set string
