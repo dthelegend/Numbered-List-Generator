@@ -39,6 +39,11 @@ fi
 #replace all ? with number (except for \?)
 for i in `seq $fstart $fstep $fend`
 do
-	echo "$fstring" | sed "s/\\\?/\\\temp/g" |  sed "s/?/$i/g" | sed "s/\\\temp/?/g"
+	fout=$fout$(echo "$fstring" | sed "s/\\\?/\\\temp/g" |  sed "s/?/$i/g" | sed "s/\\\temp/?/g")\\n
 done
+
+fout=$(echo -e "$fout" | sed '$d') #remove excess \n on last line
+echo -e "$fout" #print to terminal
+echo -e "$fout" | xclip -selection c #copy to clipboard
+
 exit 0
